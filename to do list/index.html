@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<style>
+    td,
+    th {
+        text-align: center;
+        background-color: rgb(239, 240, 158);
+    }
+
+    button {
+        background-color: #ff6969;
+    }
+
+    .table-main {
+        width: 60%;
+        border-radius: 2px;
+        margin-top: 2%;
+        margin-left: 20em;
+        background-color: rgb(0, 0, 0);
+    }
+</style>
+
+<body>
+    <div style="text-align: center; margin-top: 2em">
+        <input id="pass-data" type="text" placeholder="Enter Your Task" />
+        <button type="button" onclick="savedTask()">save</button>
+    </div>
+    <li>
+        <ul id="add-task"></ul>
+    </li>
+</body>
+
+</html>
+<script>
+    function savedTask(name) {
+        let inputTask = document.getElementById('pass-data');
+        if (inputTask.value.trim() === "") {
+            alert("please enter task!");
+            return;
+        }
+        let li = document.createElement('li');
+        li.textContent = inputTask.value;
+        document.getElementById('add-task').appendChild(li);
+        inputTask.value = "";
+    }
+</script>

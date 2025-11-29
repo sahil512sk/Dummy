@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    .todo-container {
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .todo-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .todo-form input {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .todo-form button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .todo-form button {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .todo-form button:hover {
+      opacity: 0.9;
+    }
+
+    ul#todo-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul#todo-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+      border: 1px solid #eee;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    ul#todo-list li.completed span.task-text {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task-actions button {
+      margin-left: 5px;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn-complete {
+      background: #28a745;
+      color: #fff;
+    }
+
+    .btn-delete {
+      background: #dc3545;
+      color: #fff;
+    }
+
+    .empty-message {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="todo-container">
+    <h1>To-Do List</h1>
+
+    <!-- Add Task Form -->
+    <form class="todo-form" id="todo-form">
+      <input type="text" id="task-input" placeholder="Enter a new task..." autocomplete="off" />
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- Task List -->
+    <ul id="todo-list"></ul>
+
+    <p id="empty-message" class="empty-message">No tasks yet. Add one!</p>
+  </div>
+
+  <script>
+    // Get DOM elements
+    const todoForm = document.getElementById('todo-form');
+    const taskInput = document.getElementById('task-input');
+    const todoList = document.getElementById('todo-list');
+    const emptyMessage = document.getElementById('empty-message');
+
+    // Handle form submit
+    todoForm.addEventListener('submit', function (event) {
+      event.preventDefault(); // stop form from reloading page
+
+      const taskText = taskInput.value.trim();
+
+      if (taskText === '') {
+        alert('Please enter a task.');
+        return;
+      }
+
+      addTaskToList(taskText);
+      taskInput.value = ''; // clear input
+      taskInput.focus();    // focus back on input
+      updateEmptyMessage();
+    });
+
+    // Add a new task <li> to the <ul>
+    function addTaskToList(text) {
+      // Create elements
+      const li = document.createElement('li');
+
+      const leftDiv = document.createElement('div');
+      leftDiv.className = 'task-left';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+
+      const span = document.createElement('span');
+      span.className = 'task-text';
+      span.textContent = text;
+
+      leftDiv.appendChild(checkbox);
+      leftDiv.appendChild(span);
+
+      const actionsDiv = document.createElement('div');
+      actionsDiv.className = 'task-actions';
+
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = 'Done';
+      completeBtn.className = 'btn-complete';
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.className = 'btn-delete';
+
+      actionsDiv.appendChild(completeBtn);
+      actionsDiv.appendChild(deleteBtn);
+
+      li.appendChild(leftDiv);
+      li.appendChild(actionsDiv);
+
+      // Add event listeners for this task
+      checkbox.addEventListener('change', function () {
+        li.classList.toggle('completed', checkbox.checked);
+      });
+
+      completeBtn.addEventListener('click', function () {
+        checkbox.checked = !checkbox.checked;
+        li.classList.toggle('completed', checkbox.checked);
+      });
+
+      deleteBtn.addEventListener('click', function () {
+        todoList.removeChild(li);
+        updateEmptyMessage();
+      });
+
+      // Finally add the <li> to the list
+      todoList.appendChild(li);
+    }
+
+    // Show or hide the "No tasks yet" message
+    function updateEmptyMessage() {
+      if (todoList.children.length === 0) {
+        emptyMessage.style.display = 'block';
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+    }
+
+    // Initial state
+    updateEmptyMessage();
+  </script>
+</body>
+
+</html>

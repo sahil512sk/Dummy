@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #6b8fcd);
+            color: #ffffff;
+        }
+
+        #banner {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        #clock {
+            font-size: 4rem;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #000000;
+            text-align: center;
+            letter-spacing: 0.1em;
+            min-width: 260px;
+        }
+
+        @media (max-width: 480px) {
+            #clock {
+                font-size: 2.6rem;
+                padding: 0.8rem 1.5rem;
+                min-width: 210px;
+            }
+
+            #banner {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="banner">Current Time</div>
+    <div id="clock"></div>
+
+    <script>
+        const clock = document.getElementById('clock');
+        setInterval(() => {
+            const time = new Date();
+            clock.innerHTML = time.toLocaleTimeString();
+        }, 1000);
+    </script>
+</body>
+
+</html>

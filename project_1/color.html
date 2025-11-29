@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Color Changer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .wrapper {
+      text-align: center;
+      padding: 24px 28px 20px;
+      border-radius: 12px;
+      background: #ffffffdd;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(4px);
+    }
+
+    .wrapper h1 {
+      font-size: 26px;
+      margin-bottom: 18px;
+      color: #333;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Individual colors */
+    #pink {
+      background-color: pink;
+    }
+
+    #navajowhite {
+      background-color: navajowhite;
+    }
+
+    #yellow {
+      background-color: yellow;
+    }
+
+    #lime {
+      background-color: lime;
+    }
+
+    #paleturquoise {
+      background-color: paleturquoise;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Theme Color Changer</h1>
+
+    <div class="buttons">
+      <button class="button" id="pink"></button>
+      <button class="button" id="navajowhite"></button>
+      <button class="button" id="yellow"></button>
+      <button class="button" id="lime"></button>
+      <button class="button" id="paleturquoise"></button>
+    </div>
+  </div>
+
+  <script src="color.js"></script>
+</body>
+
+</html>

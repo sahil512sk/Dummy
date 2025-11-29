@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+        }
+
+        .bmi-card {
+            width: 100%;
+            max-width: 380px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px 20px 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .bmi-card h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="number"]:focus {
+            border-color: #9b59b6;
+            box-shadow: 0 0 0 2px rgba(155, 89, 182, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #9b59b6;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.95;
+        }
+
+        #answer {
+            margin-top: 14px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            background: #f8f3fc;
+            color: #333;
+            min-height: 24px;
+        }
+
+        #guides {
+            margin-top: 18px;
+            font-size: 13px;
+            line-height: 1.5;
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 10px 12px;
+            border: 1px solid #eee;
+        }
+
+        #guides h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #444;
+        }
+
+        #answers {
+            margin-top: 14px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            background: #f8f3fc;
+            color: #333;
+            min-height: 24px;
+        }
+
+        #guides h2 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bmi-card">
+        <h1>BMI Calculator</h1>
+
+        <form id="bmiForm">
+            <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" placeholder="Enter height in centimeters" />
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="Enter weight in kilograms" />
+            </div>
+
+            <button type="submit">Check BMI</button>
+
+            <div id="answers"></div>
+
+            <div id="guides">
+                <h2>BMI Guide</h2>
+                <h3>Underweight: Less than 18.6</h3>
+                <h3>Healthy Weight: 18.6 - 24.9</h3>
+                <h3>Overweight: 25 or more</h3>
+            </div>
+        </form>
+    </div>
+    <script src="BMI.js"></script>
+</body>
+
+</html>
