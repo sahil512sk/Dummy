@@ -1,3 +1,4 @@
+// starting JS
 
 function checkactive() {
     const check = 5 / 0;
